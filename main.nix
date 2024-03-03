@@ -1,5 +1,14 @@
-{pkgs, ...}: {
+with builtins;
+{pkgs, ...}:
+let
+	nixvim = import (fetchGit {
+		url = "https://github.com/nix-community/nixvim";
+		ref = "nixos-23.05";
+	});
+in
+{
 	imports = [
+		nixvim.nixosModules.nixvim
 		./system.nix
 		./locale.nix
 		./packages.nix

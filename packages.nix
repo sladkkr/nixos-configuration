@@ -4,6 +4,8 @@
 		steam.enable = true;
 		hyprland.enable = true;
 		firefox.enable = true;
+		thunar.enable = true;
+		nixvim.enable = true;
 	};
 
 	fonts.packages = with pkgs; [
@@ -12,6 +14,8 @@
 	];
 
 	environment.systemPackages = with pkgs; [
+		softmaker-office
+		transmission
 		playerctl
 		pulsemixer
 		nodejs_20
@@ -23,11 +27,12 @@
 		mako
 		kitty
 		thunderbird
-		clang-tools
+		clang-tools_17
 		unzip
 		unrar
 		python3
 		clang
+		llvmPackages.clangUseLLVM
 		rustc
 		clippy
 		rustfmt
