@@ -18,6 +18,7 @@
 		transmission
 		playerctl
 		pulsemixer
+		light
 		nodejs_20
 		ncspot
 		telegram-desktop
