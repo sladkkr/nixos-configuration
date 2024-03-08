@@ -14,12 +14,15 @@
 	];
 
 	environment.systemPackages = with pkgs; [
+		htop
+		bat
+		tldr
+		eza
 		softmaker-office
 		transmission
 		playerctl
 		pulsemixer
 		light
-		nodejs_20
 		ncspot
 		telegram-desktop
 		bottles
@@ -28,17 +31,14 @@
 		mako
 		kitty
 		thunderbird
-		clang-tools_17
 		unzip
 		unrar
-		python3
-		clang
-		llvmPackages.clangUseLLVM
 		rustc
 		clippy
 		rustfmt
 		rust-analyzer
 		cargo
+		gcc
 		swaybg
 		libsForQt5.polkit-kde-agent
 	];

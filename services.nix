@@ -28,8 +28,6 @@
 		wantedBy = ["graphical.target"];
 		serviceConfig = {
 			Type = "oneshot";
-			User = "karol";
-			Group = "users";
 		};
 	};
 	systemd.user.services."nixos-config-sync" = {
@@ -37,8 +35,6 @@
 		wantedBy = ["graphical.target"];
 		serviceConfig = {
 			Type = "oneshot";
-			User = "karol";
-			Group = "users";
 		};
 	};
 	systemd.user.services."dotfiles-sync" = {
@@ -46,14 +42,12 @@
 		wantedBy = ["graphical.target"];
 		serviceConfig = {
 			Type = "oneshot";
-			User = "karol";
-			Group = "users";
 		};
 	};
 	systemd.user.timers."nixos-config-sync"= {
 		wantedBy = ["timers.target"];
 		timerConfig = {
-			OnBootSec = "1h";
+			OnBootSec = "1m";
 			OnUnitActiveSec = "1h";
 			Unit = "nixos-config-sync";
 		};
@@ -61,7 +55,7 @@
 	systemd.user.timers."dotfiles-sync"= {
 		wantedBy = ["timers.target"];
 		timerConfig = {
-			OnBootSec = "1h";
+			OnBootSec = "1m";
 			OnUnitActiveSec = "1h";
 			Unit = "dotfiles-sync";
 		};
