@@ -49,7 +49,6 @@
 		timerConfig = {
 			OnBootSec = "1m";
 			OnUnitActiveSec = "1h";
-			Unit = "nixos-config-sync";
 		};
 	};
 	systemd.user.timers."dotfiles-sync"= {
@@ -57,7 +56,6 @@
 		timerConfig = {
 			OnBootSec = "1m";
 			OnUnitActiveSec = "1h";
-			Unit = "dotfiles-sync";
 		};
 	};
 }
