@@ -5,8 +5,6 @@ let
 		url = "https://github.com/nix-community/nixvim";
 		ref = "nixos-23.05";
 	});
-
-	hostname = getEnv "HOSTNAME";
 in
 {
 	imports = [
@@ -18,6 +16,5 @@ in
 		./networking.nix
 		./services.nix
 		./program-config.nix
-		./${hostname}.nix
 	];
 }

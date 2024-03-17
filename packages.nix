@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+	xdg.portal.enable = true;
 	programs = {
 		git.enable = true;
 		steam.enable = true;
@@ -14,6 +15,8 @@
 	];
 
 	environment.systemPackages = with pkgs; [
+		xdg-desktop-portal-gtk
+		xdg-desktop-portal-hyprland
 		discord
 		htop
 		bat

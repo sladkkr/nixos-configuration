@@ -1,4 +1,5 @@
-{config, lib, ...}: {
+{pkgs, config, lib, ...}: {
+	qt.style = "adwaita";
 	programs = {
 		firefox.preferences = {
 			"browser.download.start_downloads_in_tmp_dir" = "true";
@@ -8,8 +9,7 @@
 		nixvim = {
 			viAlias = true;
 			vimAlias = true;
-			colorschemes.catppuccin.enable = true;
-			colorscheme = lib.mkForce "catppuccin-latte";
+			colorschemes.onedark.enable = true;
 			globals = {
 				netrw_banner = 0;
 				mapleader = " ";
@@ -19,6 +19,7 @@
 				relativenumber = true;
 				tabstop = 4;
 				shiftwidth = 4;
+				background = "light";
 			};
 			autoCmd = [
 			{
@@ -71,6 +72,7 @@
 						clangd.enable = true;
 						rust-analyzer.enable = true;
 						lua-ls.enable = true;
+						bashls.enable = true;
 					};
 				};
 			};
