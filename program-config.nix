@@ -4,7 +4,7 @@
 		firefox.preferences = {
 			"browser.download.start_downloads_in_tmp_dir" = "true";
 			"intl.locale.requested" = "pl";
-			"browser.download.dir" = "/home/karol/pobrane";
+			"browser.tabs.closeWindowWithLastTab" = "false";
 		} ;
 		nixvim = {
 			viAlias = true;
@@ -14,7 +14,7 @@
 				netrw_banner = 0;
 				mapleader = " ";
 			};
-			options = {
+			opts = {
 				number = true;
 				relativenumber = true;
 				tabstop = 4;
@@ -27,31 +27,37 @@
 				command = "lcd %:p:h";
 			}
 			];
-			maps.normal = {
-				"<leader>pv" = {
+			keymaps = [
+				{
 					action = "<cmd>Ex<cr>";
-				};
-				"<C-u>" = {
+					key = "<leader>pv";
+				}
+				{
 					action = "<C-u>zz";
-				};
-				"<C-d>" = {
+					key = "<C-u>";
+				}
+				{
 					action = "<C-d>zz";
-				};
-			};
+					key = "<C-d>";
+				}
+			];
 			plugins = {
 				treesitter.enable = true;
-				nvim-cmp = {
+				cmp = {
 					enable = true;
-					mapping = {
-						"<C-n>" = "cmp.mapping.select_next_item()";
-						"<C-d>" = "cmp.mapping.select_prev_item()";
-						"<C-y>" = "cmp.mapping.confirm({select = true})";
-					};
-					sources = [
+					settings = {
+
+						mapping = {
+							"<C-n>" = "cmp.mapping.select_next_item()";
+							"<C-d>" = "cmp.mapping.select_prev_item()";
+							"<C-y>" = "cmp.mapping.confirm({select = true})";
+						};
+						sources = [
 						{name = "nvim_lsp";}
 						{name = "path";}
 						{name = "snippy";}
-					];
+						];
+					};
 				};
 				telescope = {
 					enable = true;
@@ -68,11 +74,15 @@
 						"<leader>sd" = "definition";
 					};
 					servers = {
-						rnix-lsp.enable = true;
 						clangd.enable = true;
-						rust-analyzer.enable = true;
+						rust-analyzer = {
+							enable = true;
+							installCargo = true;
+							installRustc = true;
+						};
 						lua-ls.enable = true;
 						bashls.enable = true;
+						gopls.enable = true;
 					};
 				};
 			};

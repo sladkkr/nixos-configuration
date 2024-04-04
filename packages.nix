@@ -1,49 +1,79 @@
-{pkgs, ...}: {
+{pkgs, ...}: with pkgs; {
 	xdg.portal.enable = true;
 	programs = {
 		git.enable = true;
 		steam.enable = true;
 		hyprland.enable = true;
 		firefox.enable = true;
-		thunar.enable = true;
 		nixvim.enable = true;
 	};
 
-	fonts.packages = with pkgs; [
+	fonts.packages = [
 		fira-code
 		lato
 	];
 
-	environment.systemPackages = with pkgs; [
-		xdg-desktop-portal-gtk
-		xdg-desktop-portal-hyprland
-		discord
-		htop
-		bat
-		tldr
-		eza
-		softmaker-office
-		transmission
-		playerctl
-		pulsemixer
-		light
-		ncspot
-		telegram-desktop
-		bottles
-		heroic
-		ulauncher
-		mako
-		kitty
-		thunderbird
-		unzip
-		unrar
-		rustc
-		clippy
-		rustfmt
-		rust-analyzer
-		cargo
-		gcc
-		swaybg
-		libsForQt5.polkit-kde-agent
-	];
+	environment = {
+		systemPackages = 
+			let
+				development = [
+					rustc
+					clippy
+					rustfmt
+					rust-analyzer
+					cargo
+					gcc
+					go
+					nim
+					nimble
+					vscode
+				];
+				games = [
+					heroic
+					bottles
+				];
+				hyprland = [
+					xdg-desktop-portal-hyprland
+					playerctl
+					pulsemixer
+					light
+					ulauncher
+					mako
+					swaybg
+					libsForQt5.polkit-kde-agent
+					kitty
+					thunderbird
+				];
+				gnome = with pkgs.gnome; with gnomeExtensions; [
+					one-window-wonderland
+					dash-to-panel
+					blur-my-shell
+					noannoyance-fork
+					burn-my-windows
+					app-hider
+					custom-accent-colors
+					no-a11y
+					gnome-tweaks
+				];
+				base = [
+					xdg-desktop-portal-gtk
+					discord
+					htop
+					bat
+					tldr
+					eza
+					softmaker-office
+					spotify
+					telegram-desktop
+					unzip
+					unrar
+				];
+			in base ++ games ++ development ++ gnome;
+
+		gnome.excludePackages = with pkgs.gnome; [
+			epiphany
+			simple-scan
+			xterm
+		];
+	};
 }
