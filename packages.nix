@@ -53,6 +53,7 @@
 					app-hider
 					custom-accent-colors
 					no-a11y
+					night-theme-switcher
 					gnome-tweaks
 				];
 				base = [
