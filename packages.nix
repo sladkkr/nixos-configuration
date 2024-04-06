@@ -55,6 +55,7 @@
 					no-a11y
 					night-theme-switcher
 					gnome-tweaks
+					tiling-assistant
 				];
 				base = [
 					xdg-desktop-portal-gtk
