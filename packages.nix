@@ -27,6 +27,7 @@
 					nim
 					nimble
 					vscode
+					flatpak
 				];
 				games = [
 					heroic
