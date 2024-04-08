@@ -27,6 +27,7 @@
 					nim
 					nimble
 					vscode
+					godot_4
 				];
 				games = [
 					heroic
