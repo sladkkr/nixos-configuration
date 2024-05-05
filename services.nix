@@ -9,9 +9,7 @@
 			jack.enable = true;
 			pulse.enable = true;
 		};
-		xserver = {
-			enable = true;
-			displayManager = {
+		displayManager = {
 				sddm = {
 					enable = true;
 					wayland.enable = true;
@@ -21,9 +19,8 @@
 					enable = true;
 					user = "karol";
 				};
-			};
-			desktopManager.gnome.enable = true;
 		};
+			xserver.desktopManager.gnome.enable = true;
 	};
 	# systemd.user.services."disable-auto-mute" = {
 	# 	wantedBy = ["graphical.target"];

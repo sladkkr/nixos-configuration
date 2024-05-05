@@ -5,7 +5,7 @@
 		steam.enable = true;
 		hyprland.enable = true;
 		firefox.enable = true;
-		nixvim.enable = true;
+		#nixvim.enable = true;
 	};
 
 	fonts.packages = [
@@ -28,6 +28,9 @@
 					nimble
 					vscode
 					godot_4
+					clang-tools
+					SDL2
+					python3
 				];
 				games = [
 					heroic
@@ -57,6 +60,8 @@
 					night-theme-switcher
 					gnome-tweaks
 					tiling-assistant
+					apostrophe
+					gnome-boxes
 				];
 				base = [
 					xdg-desktop-portal-gtk

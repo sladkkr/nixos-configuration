@@ -1,13 +1,13 @@
 with builtins;
 {pkgs, ...}:
-let
-	nixvim = import (fetchGit {
-		url = "https://github.com/nix-community/nixvim";
-	});
-in
+#let
+#	nixvim = import (fetchGit {
+#		url = "https://github.com/nix-community/nixvim";
+#	});
+#in
 {
 	imports = [
-		nixvim.nixosModules.nixvim
+#		nixvim.nixosModules.nixvim
 		./system.nix
 		./locale.nix
 		./packages.nix
