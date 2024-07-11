@@ -51,6 +51,7 @@
 					no-a11y
 					gnome-tweaks
 					tiling-assistant
+					weather-or-not
 					gnome-boxes
 					gnome-disk-utility
 				];
