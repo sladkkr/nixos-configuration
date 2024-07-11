@@ -3,9 +3,7 @@
 	programs = {
 		git.enable = true;
 		steam.enable = true;
-		hyprland.enable = true;
 		firefox.enable = true;
-		#nixvim.enable = true;
 	};
 
 	fonts.packages = [
@@ -23,17 +21,12 @@
 					rust-analyzer
 					cargo
 					gcc
-					go
-					nim
-					nimble
-					vscode
 					godot_4
 					clang-tools
-					SDL2
 					python3
 				];
 				games = [
-					heroic
+					steam
 					bottles
 				];
 				hyprland = [
@@ -53,30 +46,32 @@
 					dash-to-panel
 					blur-my-shell
 					noannoyance-fork
-					burn-my-windows
 					app-hider
 					custom-accent-colors
 					no-a11y
-					night-theme-switcher
 					gnome-tweaks
 					tiling-assistant
-					apostrophe
 					gnome-boxes
+					gnome-disk-utility
+				];
+				apps = [
+					discord
+					spotify
+					telegram-desktop
+
 				];
 				base = [
 					xdg-desktop-portal-gtk
-					discord
 					htop
 					bat
 					tldr
 					eza
-					softmaker-office
-					spotify
-					telegram-desktop
 					unzip
 					unrar
+					neovim
+					vimPlugins.packer-nvim
 				];
-			in base ++ games ++ development ++ gnome;
+			in base ++ gnome ++ apps ++ games ++ development;
 
 		gnome.excludePackages = with pkgs.gnome; [
 			epiphany

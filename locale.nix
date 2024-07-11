@@ -3,7 +3,7 @@
 	time.timeZone = "Europe/Warsaw";
 
 	i18n = {
-		defaultLocale = "pl_PL.UTF-8";
+		defaultLocale = "en_US.UTF-8";
 	  	extraLocaleSettings = {
   			LC_ADDRESS = "pl_PL.UTF-8";
   	  		LC_IDENTIFICATION = "pl_PL.UTF-8";
