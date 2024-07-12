@@ -24,6 +24,7 @@
 					godot_4
 					clang-tools
 					python3
+					nil
 				];
 				games = [
 					steam
@@ -63,13 +64,17 @@
 				];
 				base = [
 					xdg-desktop-portal-gtk
+					mdadm
 					htop
 					bat
 					tldr
 					eza
 					unzip
 					unrar
+					trash-cli
 					neovim
+					bash-completion
+					hdparm
 					vimPlugins.packer-nvim
 				];
 			in base ++ gnome ++ apps ++ games ++ development;

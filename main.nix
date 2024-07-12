@@ -1,5 +1,4 @@
-with builtins;
-{pkgs, ...}:
+{...}:
 {
 	imports = [
 		./system.nix
