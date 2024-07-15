@@ -29,6 +29,7 @@
 		in {
 			enable = true;
 			description = "Keeping /home/karol/repos/nixos-configuration in sync with remote repository.";
+			wantedBy = ["default.target"];
 			wants = ["NetworkManager-wait-online.service"];
 			after = ["NetworkManager-wait-online.service"];
 			path = with pkgs; [bash git openssh ];
