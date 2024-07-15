@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
 	hardware.pulseaudio.enable = false;
 	services = {
 		pipewire = {
@@ -23,6 +23,18 @@
 		xserver.desktopManager.gnome.enable = true;
 	};
 
+	systemd.services.testing-inotifywait = {
+		description = "Testing inotifywait";
+		serviceConfig = {
+			Type = "oneshot";
+			RemainAfterExit = true;
+			ExecStart = pkgs.writeShellScript "testing-inotifywait.sh" ''
+				${pkgs.inotify-tools}/bin/inotifywait  -e create,moved_to,attrib --include '/karol-sync-nixos-configuration-finished$' -qq /tmp && \
+				mv /tmp/karol-sync-nixos-configuration-finished /tmp/systemd-finished
+			'';
+		};
+	};
+
 	home-manager.users.karol.systemd.user = {
 		enable = true;
 		services = let
@@ -41,20 +53,19 @@
 		in {
 			sync-notes = createSyncService "/home/karol/repos/notes";
 			sync-dotfiles = createSyncService "/home/karol/repos/dotfiles";
-			sync-nixos-configuration = createSyncService "/home/karol/repos/nixos-configuration";
-			rebuild-nixos-postsync = {
-				Unit = {
-					Description = "Rebuilds and switches nixos configuration in case changes were made on another machine.";
-					Requires = "sync-nixos-configuration.service";
-					After = "sync-nixos-configuration.service";
-				};
+			sync-nixos-configuration = let path = "/home/karol/repos/nixos-configuration"; in {
+				Unit.Description = "Keeping ${path} in sync with repository.";
 				Install.WantedBy = ["default.target"];
 				Service = {
 					Type = "oneshot";
 					RemainAfterExit = true;
 					Environment = "PATH=/run/current-system/sw/bin/";
-					ExecStart = "/usr/bin/env sudo /usr/bin/env nixos-rebuild --switch";
+					ExecStartPre = "/usr/bin/env nm-online -sq";
+					ExecStart = "/usr/bin/env bash /home/karol/.local/bin/git-auto-pull ${path}";
+					ExecStartPost = "/usr/bin/env touch /tmp/karol-sync-nixos-configuration-finished";
+					ExecStop = "/usr/bin/env bash /home/karol/.local/bin/git-auto-commit ${path}";
 				};
+				
 			};
 		};
 	};
