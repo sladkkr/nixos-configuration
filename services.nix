@@ -50,6 +50,7 @@
 			wantedBy = ["default.service"];
 			wants = [ config.systemd.services.sync-nixos-configuration.name ];
 			after = [ config.systemd.services.sync-nixos-configuration.name ];
+			path = with pkgs; [ nixos-rebuild ];
 			serviceConfig = {
 				Type = "oneshot";
 				RemainAfterExit = true;

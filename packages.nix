@@ -80,6 +80,7 @@
 					neovim
 					bash-completion
 					hdparm
+					wl-clipboard
 				];
 			in base ++ gnome ++ apps ++ games ++ development;
 
