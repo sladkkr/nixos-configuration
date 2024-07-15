@@ -51,6 +51,9 @@
 			wants = [ config.systemd.services.sync-nixos-configuration.name ];
 			after = [ config.systemd.services.sync-nixos-configuration.name ];
 			path = with pkgs; [ nixos-rebuild ];
+			environment = {
+				NIX_PATH = "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels";
+			};
 			serviceConfig = {
 				Type = "oneshot";
 				RemainAfterExit = true;
