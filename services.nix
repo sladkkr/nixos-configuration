@@ -23,12 +23,10 @@
 		xserver.desktopManager.gnome.enable = true;
 	};
 
-	systemd.services = {
-		sync-nixos-configuration = let 
-			path = "/home/karol/repos/nixos-configuration";
-		in {
+	systemd.services = let 
+		createSyncService = path: {
 			enable = true;
-			description = "Keeping /home/karol/repos/nixos-configuration in sync with remote repository.";
+			description = "Keeping ${path} in sync with remote repository.";
 			wantedBy = ["default.target"];
 			wants = ["NetworkManager-wait-online.service"];
 			after = ["NetworkManager-wait-online.service"];
@@ -42,6 +40,10 @@
 				ExecStop = "/usr/bin/env bash /home/karol/.local/bin/git-auto-commit ${path}";
 			};
 		};
+	in {
+		sync-nixos-configuration = createSyncService "/home/karol/repos/nixos-configuration";
+		sync-dotfiles = createSyncService "/home/karol/repos/dotfiles";
+		sync-notes = createSyncService "/home/karol/repos/notes";
 	};
 
 

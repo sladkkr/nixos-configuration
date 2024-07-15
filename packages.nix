@@ -57,6 +57,9 @@
 					gnome-boxes
 					pkgs.gnome-disk-utility
 					pip-on-top
+					quick-settings-audio-panel
+					quick-settings-audio-devices-hider
+					quick-settings-audio-devices-renamer
 				];
 				apps = [
 					discord
