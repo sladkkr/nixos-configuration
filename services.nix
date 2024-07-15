@@ -51,7 +51,7 @@
 			wantedBy = ["default.service"];
 			wants = [ config.systemd.services.sync-nixos-configuration.name ];
 			after = [ config.systemd.services.sync-nixos-configuration.name ];
-			path = with pkgs; [ nixos-rebuild ];
+			path = [ pkgs.nixos-rebuild ];
 			environment.NIX_PATH = nixPath;
 			serviceConfig = {
 				Type = "oneshot";
@@ -63,6 +63,7 @@
 			enable = true;
 			description = "Remove old generations and nix store entries older than 7 days at shutdown";
 			wantedBy = ["default.target"];
+			path = [ pkgs.nix ];
 			environment.NIX_PATH = nixPath;
 			serviceConfig = {
 				Type = "oneshot";
