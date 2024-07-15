@@ -40,6 +40,7 @@
 				ExecStop = "/usr/bin/env bash /home/karol/.local/bin/git-auto-commit ${path}";
 			};
 		};
+		nixPath = "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels";
 	in {
 		sync-nixos-configuration = createSyncService "/home/karol/repos/nixos-configuration";
 		sync-dotfiles = createSyncService "/home/karol/repos/dotfiles";
@@ -51,51 +52,23 @@
 			wants = [ config.systemd.services.sync-nixos-configuration.name ];
 			after = [ config.systemd.services.sync-nixos-configuration.name ];
 			path = with pkgs; [ nixos-rebuild ];
-			environment = {
-				NIX_PATH = "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels";
-			};
+			environment.NIX_PATH = nixPath;
 			serviceConfig = {
 				Type = "oneshot";
 				RemainAfterExit = true;
 				ExecStart = "/usr/bin/env nixos-rebuild switch";
 			};
 		};
+		nixos-colect-garbage = {
+			enable = true;
+			description = "Remove old generations and nix store entries older than 7 days at shutdown";
+			wantedBy = ["default.target"];
+			environment.NIX_PATH = nixPath;
+			serviceConfig = {
+				Type = "oneshot";
+				RemainAfterExit = true;
+				ExecStop = "/usr/bin/env nix-colect-garbage --delete-older-than 7d";
+			};
+		};
 	};
-
-
-
-	# home-manager.users.karol.systemd.user = {
-	# 	enable = true;
-	# 	services = let
-	# 		createSyncService = path: {
-	# 			Unit.Description = "Keeping ${path} in sync with repository.";
-	# 			Install.WantedBy = ["default.target"];
-	# 			Service = {
-	# 				Type = "oneshot";
-	# 				RemainAfterExit = true;
-	# 				Environment = "PATH=/run/current-system/sw/bin/";
-	# 				ExecStartPre = "/usr/bin/env nm-online -sq";
-	# 				ExecStart = "/usr/bin/env bash /home/karol/.local/bin/git-auto-pull ${path}";
-	# 				ExecStop = "/usr/bin/env bash /home/karol/.local/bin/git-auto-commit ${path}";
-	# 			};
-	# 		};
-	# 	in {
-	# 		sync-notes = createSyncService "/home/karol/repos/notes";
-	# 		sync-dotfiles = createSyncService "/home/karol/repos/dotfiles";
-	# 		sync-nixos-configuration = let path = "/home/karol/repos/nixos-configuration"; in {
-	# 			Unit.Description = "Keeping ${path} in sync with repository.";
-	# 			Install.WantedBy = ["default.target"];
-	# 			Service = {
-	# 				Type = "oneshot";
-	# 				RemainAfterExit = true;
-	# 				Environment = "PATH=/run/current-system/sw/bin/";
-	# 				ExecStartPre = "/usr/bin/env nm-online -sq";
-	# 				ExecStart = "/usr/bin/env bash /home/karol/.local/bin/git-auto-pull ${path}";
-	# 				ExecStartPost = "/usr/bin/env touch /tmp/karol-sync-nixos-configuration-finished";
-	# 				ExecStop = "/usr/bin/env bash /home/karol/.local/bin/git-auto-commit ${path}";
-	# 			};
-	# 			
-	# 		};
-	# 	};
-	# };
 }
