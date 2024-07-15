@@ -8,7 +8,7 @@
 
 	fonts.packages = [
 		fira-code
-		lato
+		inter
 	];
 
 	environment = {
@@ -44,17 +44,19 @@
 				];
 				gnome = with pkgs.gnome; with gnomeExtensions; [
 					one-window-wonderland
+					pkgs.gnome-terminal
 					dash-to-panel
 					blur-my-shell
 					noannoyance-fork
 					app-hider
 					custom-accent-colors
 					no-a11y
-					gnome-tweaks
+					pkgs.gnome-tweaks
 					tiling-assistant
 					weather-or-not
 					gnome-boxes
-					gnome-disk-utility
+					pkgs.gnome-disk-utility
+					pip-on-top
 				];
 				apps = [
 					discord
@@ -75,14 +77,19 @@
 					neovim
 					bash-completion
 					hdparm
-					vimPlugins.packer-nvim
 				];
 			in base ++ gnome ++ apps ++ games ++ development;
 
-		gnome.excludePackages = with pkgs.gnome; [
-			epiphany
-			simple-scan
+		gnome.excludePackages = with gnome; [
+			pkgs.epiphany
+			pkgs.simple-scan
 			xterm
+			gnome-console
+			gnome-maps
+			gnome-tour
+			gnome-logs
+			pkgs.gnome-system-monitor
+			gnome-contacts
 		];
 	};
 }
