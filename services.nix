@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
 	hardware.pulseaudio.enable = false;
 	services = {
 		pipewire = {
@@ -44,6 +44,18 @@
 		sync-nixos-configuration = createSyncService "/home/karol/repos/nixos-configuration";
 		sync-dotfiles = createSyncService "/home/karol/repos/dotfiles";
 		sync-notes = createSyncService "/home/karol/repos/notes";
+		nixos-rebuild = {
+			enable = true;
+			description = "Rebuild and switch nixos configuration in case it was changed on another machine";
+			wantedBy = ["default.service"];
+			wants = [ config.systemd.services.sync-nixos-configuration.name ];
+			after = [ config.systemd.services.sync-nixos-configuration.name ];
+			serviceConfig = {
+				Type = "oneshot";
+				RemainAfterExit = true;
+				ExecStart = "/usr/bin/env nixos-rebuild switch";
+			};
+		};
 	};
 
 
