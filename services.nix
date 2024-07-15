@@ -68,7 +68,7 @@
 			serviceConfig = {
 				Type = "oneshot";
 				RemainAfterExit = true;
-				ExecStop = "/usr/bin/env nix-colect-garbage --delete-older-than 7d";
+				ExecStop = "/usr/bin/env nix-collect-garbage --delete-older-than 7d";
 			};
 		};
 	};
