@@ -77,7 +77,6 @@
 					unzip
 					unrar
 					trash-cli
-					neovim
 					bash-completion
 					hdparm
 					wl-clipboard
