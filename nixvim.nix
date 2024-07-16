@@ -9,7 +9,7 @@
 			mapleader = " ";
 			netrw_banner = false;
 		};
-		globalOpts = {
+		globalOpts= {
 			number = true;
 			relativenumber = true;
 			tabstop = 4;
@@ -34,46 +34,63 @@
 
 			{
 				key = "<leader>v";
-				action = "<esc>:Ex<cr>";
+				action = ":Ex<cr>";
+			}
+
+			{
+				key = "<leader>f";
+				action = "<cmd>Telescope find_files<cr>";
+			}
+
+			{
+				key = "<leader>g";
+				action = "<cmd>Telescope git_files<cr>";
+			}
+
+			{
+				key = "<leader>s";
+				action = "<cmd>Telescope live_grep<cr>";
 			}
 		];
 		plugins = {
 			auto-save.enable = true;
-			treesitter.enable = true;
-			telescope = {
+			treesitter = {
 				enable = true;
-				settings.mappings = {
-					n = {
-						"<leader>f".__raw = "require'telescope.actions'.find_files";
-						"<leader>s".__raw = "require'telescope.actions'.live_grep";
-						"<leader>g".__raw = "require'telescope.actions'.git_files";
-					};
+				settings = {
+					auto_install = true;
+					highlight.enable = true;
 				};
 			};
-			cmp.enable = true;
+			indent-blankline.enable = true;
+			telescope.enable = true;
+			cmp = {
+				enable = true;
+				autoEnableSources = true;
+				settings.sources = [{name = "nvim_lsp";}];
+			};
 			cmp-nvim-lsp.enable = true;
 			lsp = {
 				enable = true;
-				keymaps = {
-					diagnostic = {
-						"<C-n>" = "goto_next";
-						"<C-p>" = "goto-prec";
-					};
-					lspBuf = {
-						"<leader>i" = "hover";
-						"<leader>d" = "definition";
-						"<leader>r" = "rename";
-					};
+				keymaps.lspBuf = {
+					"<leader>i" = "hover";
+					"<leader>d" = "definition";
+					"<leader>r" = "rename";
 				};
 				servers = {
 					nixd.enable = true;
 					pyright.enable = true;
-					rust-analyzer.enable = true;
-					vls.enable = true;
+					rust-analyzer = {
+						enable = true;
+						installCargo = true;
+						installRustc = true;
+					};
+					vls = {
+						enable = true;
+						cmd = [ "steam-run" "/home/karol/.vls/bin/vls_linux_x64" ];
+					};
 					bashls.enable = true;
 					fsautocomplete.enable = true;
 					gdscript.enable = true;
-					indent-blankline.enable = true;
 				};
 			};
 		};

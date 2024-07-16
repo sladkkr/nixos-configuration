@@ -5,6 +5,7 @@ let
 in {...}: {
 	imports = [
 		nixvim.nixosModules.nixvim
+		./nixvim.nix
 		./system.nix
 		./locale.nix
 		./packages.nix
