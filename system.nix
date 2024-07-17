@@ -1,13 +1,4 @@
 {...}: {
-	boot.loader = {
-		systemd-boot.enable = true;
-  		efi.canTouchEfiVariables = true;
-		grub = {
-			device = "nodev";
-			useOSProber = true;
-		};
-	};
-
 	security.sudo.wheelNeedsPassword = false;
 
 	nixpkgs.config.allowUnfree = true;

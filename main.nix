@@ -5,13 +5,12 @@ let
 in {...}: {
 	imports = [
 		nixvim.nixosModules.nixvim
-		./nixvim.nix
 		./system.nix
+		./boot.nix
 		./locale.nix
-		./packages.nix
 		./users.nix
-		./networking.nix
-		./services.nix
-		./program-config.nix
+		./packages/main.nix
+		./services/main.nix
+		./program-config/main.nix
 	];
 }
