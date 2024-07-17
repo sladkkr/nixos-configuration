@@ -11,6 +11,6 @@ in {...}: {
 		./users.nix
 		./packages/main.nix
 		./services/main.nix
-		./program-config/main.nix
+		./programs/main.nix
 	];
 }

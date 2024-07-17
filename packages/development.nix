@@ -9,4 +9,7 @@ pkgs: with pkgs; [
 	clang-tools
 	python3
 	nil
+	ocaml
+	dune_3
+	opam
 ]

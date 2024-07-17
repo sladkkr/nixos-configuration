@@ -4,4 +4,6 @@
 		description = "Karol Klimczak";
 		extraGroups = [ "networkmanager" "wheel" ];
 	};
+
+	environment.localBinInPath = true;
 }

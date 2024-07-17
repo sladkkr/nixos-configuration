@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
 	programs.nixvim = {
 		enable = true;
 		viAlias = true;
@@ -61,7 +61,6 @@
 					highlight.enable = true;
 				};
 			};
-			indent-blankline.enable = true;
 			telescope.enable = true;
 			cmp = {
 				enable = true;
@@ -69,6 +68,7 @@
 				settings.sources = [{name = "nvim_lsp";}];
 			};
 			cmp-nvim-lsp.enable = true;
+			cmp-path.enable = true;
 			lsp = {
 				enable = true;
 				keymaps.lspBuf = {
@@ -86,10 +86,10 @@
 					};
 					vls = {
 						enable = true;
-						cmd = [ "steam-run" "/home/karol/.vls/bin/vls_linux_x64" ];
+						cmd = [ "${pkgs.steam}/bin/steam-run" "${pkgs.vlang}/bin/v" "ls" ];
 					};
+					ocamllsp.enable = true;
 					bashls.enable = true;
-					fsautocomplete.enable = true;
 					gdscript.enable = true;
 				};
 			};
