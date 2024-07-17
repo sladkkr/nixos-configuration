@@ -24,7 +24,7 @@
 		nixos-rebuild = {
 			enable = true;
 			description = "Rebuild and switch nixos configuration in case it was changed on another machine";
-			wantedBy = ["multi-user.service"];
+			wantedBy = ["default.service"];
 			wants = [ config.systemd.services.sync-nixos-configuration.name ];
 			after = [ config.systemd.services.sync-nixos-configuration.name ];
 			environment.NIX_PATH = nixPath;
