@@ -35,17 +35,5 @@
 				ExecStart = "/usr/bin/env nixos-rebuild switch";
 			};
 		};
-		nixos-colect-garbage = {
-			enable = true;
-			description = "Remove old generations and nix store entries older than 7 days at shutdown";
-			wantedBy = ["default.target"];
-			path = [ pkgs.nix ];
-			environment.NIX_PATH = nixPath;
-			serviceConfig = {
-				Type = "oneshot";
-				RemainAfterExit = true;
-				ExecStop = "/usr/bin/env nix-collect-garbage --delete-older-than 7d";
-			};
-		};
 	};
 }

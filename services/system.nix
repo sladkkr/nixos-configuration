@@ -1,6 +1,10 @@
 {...}: {
 	hardware.pulseaudio.enable = false;
 	networking.networkmanager.enable = true;
+	nix = {
+		gc.automatic = true;
+		settings.auto-optimise-store = true;
+	};
 	services = {
 		pipewire = {
 			enable = true;
