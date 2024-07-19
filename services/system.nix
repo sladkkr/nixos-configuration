@@ -19,12 +19,15 @@
 					enable = true;
 					wayland.enable = true;
 				};
-				defaultSession = "gnome";
+				defaultSession = "plasma";
 				autoLogin = {
 					enable = true;
 					user = "karol";
 				};
 		};
-		xserver.desktopManager.gnome.enable = true;
+		xserver.desktopManager = {
+			gnome.enable = true;
+			plasma6.enable = true;
+		};
 	};
 }

@@ -10,5 +10,7 @@ pkgs: with pkgs; [
 	trash-cli
 	bash-completion
 	hdparm
+	ripgrep
 	wl-clipboard
+	xwaylandvideobridge
 ]
