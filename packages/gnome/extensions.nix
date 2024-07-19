@@ -2,9 +2,9 @@ pkgs: with pkgs.gnomeExtensions; [
 	one-window-wonderland
 	dash-to-panel
 	blur-my-shell
-	noannoyance-fork
 	app-hider
 	custom-accent-colors
+	no-a11y
 	steal-my-focus-window
 	tiling-assistant
 	weather-or-not
