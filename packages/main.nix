@@ -8,8 +8,8 @@
 			++ import ./games.nix pkgs
 			#++ import gnome/main.nix pkgs;
 			#++ import ./hyperland.nix pkgs;
-			++ import ./kde-plasma.nix pkgs;
+			++ import plasma/packages.nix pkgs;
 
-		gnome.excludePackages = import ./gnome/exclude.nix pkgs;
+	gnome.excludePackages = import gnome/exclude.nix pkgs ++ import plasma/exclude.nix pkgs;
 	};
 }
