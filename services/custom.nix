@@ -35,5 +35,11 @@
 				ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch";
 			};
 		};
+		hdd-spindown = {
+			enable = config.networking.hostName == "amber";
+			description = "Run hd-idle to spindown hdd drives after default timeout";
+			wantedBy = ["multi-user.target"];
+			serviceConfig.ExecStart = "${pkgs.hd-idle}/bin/hd-idle";
+		};
 	};
 }
