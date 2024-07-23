@@ -6,5 +6,6 @@
 		./git.nix
 		./nixvim/main.nix
 		./bash.nix
+		./flatpak.nix
 	];
 }
