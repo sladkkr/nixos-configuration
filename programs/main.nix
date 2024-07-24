@@ -5,7 +5,7 @@
 		./steam.nix
 		./git.nix
 		./nixvim/main.nix
-		./bash.nix
+		bash/main.nix
 		./flatpak.nix
 	];
 }
