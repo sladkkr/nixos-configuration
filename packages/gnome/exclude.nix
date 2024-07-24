@@ -8,4 +8,5 @@ pkgs: with pkgs; with gnome; [
 	gnome-logs
 	pkgs.gnome-system-monitor
 	gnome-contacts
+	gnome-software-center
 ]
