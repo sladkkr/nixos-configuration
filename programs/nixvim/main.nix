@@ -4,7 +4,10 @@
 		viAlias = true;
 		vimAlias = true;
 		colorschemes.kanagawa.enable = true;
-		clipboard.providers.wl-copy.enable = true;
+		clipboard = {
+			providers.wl-copy.enable = true;
+			register = "unnamedplus";
+		};
 		globals = {
 			mapleader = " ";
 			netrw_banner = false;
@@ -65,10 +68,18 @@
 			cmp = {
 				enable = true;
 				autoEnableSources = true;
-				settings.sources = [{name = "nvim_lsp";}];
+				settings = {
+					sources = [
+						{name = "nvim_lsp";}
+						{name = "async_path";}
+					];
+					mapping = {
+						"<C-n>" = "cmp.mapping.select_next_item()";
+						"<C-p>" = "cmp.mapping.select_prev_item()";
+						"<C-y>" = "cmp.mapping.confirm({select = true})";
+					};
+				};
 			};
-			cmp-nvim-lsp.enable = true;
-			cmp-path.enable = true;
 			lsp = {
 				enable = true;
 				keymaps.lspBuf = {
