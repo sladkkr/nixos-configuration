@@ -7,5 +7,6 @@
 		./nixvim/main.nix
 		bash/main.nix
 		./flatpak.nix
+		./gamemode.nix
 	];
 }
