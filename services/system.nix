@@ -1,6 +1,7 @@
 {...}: {
 	hardware.pulseaudio.enable = false;
 	networking.networkmanager.enable = true;
+	virtualisation.libvirtd.enable = true;
 	nix = {
 		gc.automatic = true;
 		settings.auto-optimise-store = true;

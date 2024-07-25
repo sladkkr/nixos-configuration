@@ -3,4 +3,5 @@ pkgs: with pkgs; [
 	gnome-connections
 	gnome-tweaks
 	morewaita-icon-theme
+	gnome.gnome-boxes
 ]
