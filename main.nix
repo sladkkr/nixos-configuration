@@ -12,5 +12,6 @@ in {...}: {
 		./packages/main.nix
 		./services/main.nix
 		./programs/main.nix
+		./environment.nix
 	];
 }

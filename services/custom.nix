@@ -24,15 +24,15 @@
 		nixos-rebuild = {
 			enable = true;
 			description = "Rebuild and switch nixos configuration in case it was changed on another machine";
-			wantedBy = ["default.service"];
-			wants = [ config.systemd.services.sync-nixos-configuration.name ];
-			after = [ config.systemd.services.sync-nixos-configuration.name ];
+			wantedBy = ["multi-user.target"];
+			wants = ["sync-nixos-configuration.service"];
+			after = ["sync-nixos-configuration.service"];
 			environment.NIX_PATH = nixPath;
 			path = [ pkgs.git ];
 			serviceConfig = {
 				Type = "oneshot";
 				RemainAfterExit = true;
-				ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch";
+				ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --upgrade";
 			};
 		};
 		hdd-spindown = {

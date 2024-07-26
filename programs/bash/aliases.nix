@@ -5,7 +5,7 @@
 	lla = "eza -al";
 	grep = "grep --color=auto";
 	mac = "source mac";
-	nixos-edit = "nvim ~/repos/nixos-configuration && sudo nixos-rebuild switch";
+	nixos-edit = "nvim ~/repos/nixos-configuration && sudo nixos-rebuild switch --upgrade";
 	sudo = "sudo ";
 	notes = "nvim ~/repos/notes";
 	rm = "trash-put";
