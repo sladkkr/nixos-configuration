@@ -16,18 +16,19 @@
 			pulse.enable = true;
 		};
 		displayManager = {
-				sddm = {
-					enable = true;
-					wayland.enable = true;
-				};
-				defaultSession = "gnome";
-				autoLogin = {
-					enable = true;
-					user = "karol";
-				};
+			sddm = {
+				enable = true;
+				wayland.enable = true;
+			};
+			defaultSession = "gnome";
+			autoLogin = {
+				enable = true;
+				user = "karol";
+			};
 		};
 		xserver.desktopManager = {
 			gnome.enable = true;
+			xfce.enable = true;
 			#plasma6.enable = true;
 		};
 	};
