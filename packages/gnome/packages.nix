@@ -4,4 +4,5 @@ pkgs: with pkgs; [
 	gnome-tweaks
 	morewaita-icon-theme
 	gnome.gnome-boxes
+	mint-cursor-themes
 ]
