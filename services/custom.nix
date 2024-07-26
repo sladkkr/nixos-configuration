@@ -22,13 +22,13 @@
 		sync-dotfiles = createSyncService "/home/karol/repos/dotfiles";
 		sync-notes = createSyncService "/home/karol/repos/notes";
 		nixos-rebuild = {
-			enable = true;
+			enable = false;
 			description = "Rebuild and switch nixos configuration in case it was changed on another machine";
 			wantedBy = ["multi-user.target"];
 			wants = ["sync-nixos-configuration.service"];
 			after = ["sync-nixos-configuration.service"];
 			environment.NIX_PATH = nixPath;
-			path = [ pkgs.git ];
+			path = [ pkgs.git pkgs.nix ];
 			serviceConfig = {
 				Type = "oneshot";
 				RemainAfterExit = true;
