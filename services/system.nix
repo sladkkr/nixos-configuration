@@ -17,7 +17,6 @@
 		};
 		displayManager = {
 			sddm.enable = true;
-			defaultSession = "gnome";
 			autoLogin = {
 				enable = true;
 				user = "karol";
@@ -26,8 +25,8 @@
 		xserver = {
 			enable = true;
 			desktopManager = {
-				xfce.enable = true;
-				gnome.enable = true;
+				cinnamon.enable = true;
+				#gnome.enable = true;
 				#plasma6.enable = true;
 			};
 		};
