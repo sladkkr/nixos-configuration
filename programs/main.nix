@@ -1,6 +1,5 @@
 {...}: {
 	imports = [
-		./theming.nix
 		./firefox.nix
 		./steam.nix
 		./git.nix
