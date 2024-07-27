@@ -1,5 +1,9 @@
-{...}: {
+{config, ...}: {
 	hardware.pulseaudio.enable = false;
+	hardware.bluetooth = {
+		enable = config.networking.hostName == "cobalt";
+		powerOnBoot = config.networking.hostName == "cobalt";
+	};
 	networking.networkmanager.enable = true;
 	virtualisation.libvirtd.enable = true;
 	nix = {
