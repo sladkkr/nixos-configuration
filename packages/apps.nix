@@ -3,5 +3,5 @@ pkgs: with pkgs; [
 	spotify
 	telegram-desktop
 	kitty
-	runelite
+	geary
 ]
