@@ -1,5 +1,12 @@
 {pkgs, ...}: {
-	xdg.portal.enable = true;
+	xdg.portal = {
+		enable = true;
+		extraPortals = with pkgs; [
+			xdg-desktop-portal-wlr
+			xdg-desktop-portal-gtk
+		];
+	};
+
 	fonts.packages = import ./fonts.nix pkgs;
 	environment = {
 		systemPackages = import ./base.nix pkgs

@@ -1,5 +1,4 @@
 pkgs: with pkgs; [
-	xdg-desktop-portal-gtk
 	mdadm
 	htop
 	bat
