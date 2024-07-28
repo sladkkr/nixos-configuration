@@ -12,4 +12,5 @@ pkgs: with pkgs; [
 	ripgrep
 	wl-clipboard
 	xwaylandvideobridge
+	os-prober
 ]
